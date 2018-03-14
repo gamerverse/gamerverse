@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
+ruby '2.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.1.5'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+
 # Use Haml as the templating library
 gem 'haml'
 
