@@ -7,6 +7,7 @@ gem 'rails', '5.1.5'
 
 # Use Haml as the templating library
 gem 'haml'
+gem 'haml-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
