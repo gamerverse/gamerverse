@@ -7,17 +7,16 @@ Feature: Home Page - Featured Games
 Background: games have been added to database
 
   Given the following games exist:
-  | title                   | coverart                                              |
-  | League of Legends       | /app/assets/images/covers/league_of_legends.jpg       |
-  | Overwatch               | /app/assets/images/covers/overwatch.jpg               |
-  | Super Smash Bros. Melee | /app/assets/images/covers/super_smash_bros_melee.jpg  |
+  | title                   | coverart                                    |
+  | League of Legends       | /assets/covers/league_of_legends.jpg        |
+  | Overwatch               | /assets/covers/overwatch.jpg                |
+  | Super Smash Bros. Melee | /assets/covers/super_smash_bros_melee.jpg   |
 
   And I am on the Home page
   Then 3 seed games should exist
   
-Scenario: featured games are shown on the homepage, assuming we are not signed in
+Scenario: featured games are shown on the homepage
   Given I am on the Home page
-  And I am not signed in
   Then I should see a Featured Games section
-  And I should see it populated with a number of games
+  And I should see it populated with 3 games
   

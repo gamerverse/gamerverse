@@ -1,4 +1,10 @@
-%h1 Homepage#index
-%p Find me in app/views/homepage/index.html.haml
+%h1 Gamerverse
 
-%p Sup Zach
+%section{id: "featured-games"}
+  %h1 Featured Games
+  
+  -@games.each do |game|
+    %div{class: "featured-game"}
+      =image_tag(game.getCoverArtUrl, width: 300)
+      %p
+        =game.getTitle

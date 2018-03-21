@@ -19,3 +19,11 @@ Given /^(?:|I )am on the (.+) page$/ do |page_name|
     visit(page_name)
   end
 end
+
+Then /^(?:|I )should see a (.+) section$/ do |section_name|
+  expect(page.find('h1', text: section_name))
+end
+  
+  
+And /^(?:|I )should see it populated with (.+) games$/ do |num_games|
+end
