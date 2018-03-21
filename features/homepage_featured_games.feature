@@ -19,4 +19,3 @@ Scenario: featured games are shown on the homepage
   Given I am on the Home page
   Then I should see a Featured Games section
   And I should see it populated with 3 games
-  

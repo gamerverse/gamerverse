@@ -26,4 +26,5 @@ end
   
   
 And /^(?:|I )should see it populated with (.+) games$/ do |num_games|
+  expect(page).to have_selector('.featured-game', count: num_games)
 end
