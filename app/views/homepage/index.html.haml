@@ -6,6 +6,6 @@
     
     -@games.each do |game|
       %div{class: "featured-game"}
-        =image_tag(game.coverart, width: 150)
+        =image_tag(game.coverart, width: 150, alt: game.title)
         %p
           =game.title
