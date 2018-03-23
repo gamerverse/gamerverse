@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Game.create(title: "League of Legends", coverart: "/assets/covers/league_of_legends.jpg")
-Game.create(title: "Overwatch", coverart: "/assets/covers/overwatch.jpg")
-Game.create(title: "Super Smash Bros. Melee", coverart: "/assets/covers/super_smash_bros_melee.jpg")
+Game.create(title: "League of Legends", coverart: "covers/league_of_legends.jpg")
+Game.create(title: "Overwatch", coverart: "covers/overwatch.jpg")
+Game.create(title: "Super Smash Bros. Melee", coverart: "covers/super_smash_bros_melee.jpg")
