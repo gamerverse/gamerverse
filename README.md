@@ -4,9 +4,15 @@ A website that aims to help gamers discover new games, especially ones that are 
 
 ## Instructions
 
-It's a good idea to check the status first with the following command:
+### Development
 
-    heroku rake -a gamerverse db:migrate:seed
+Run the application in the development environment (AWS Cloud9):
+
+    rails db:migrate RAILS_ENV=development
+    rails db:seed
+    rails s -b $IP -p $PORT
+
+### Production
 
 Run the application in the production environment (Heroku):
 
