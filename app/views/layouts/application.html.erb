@@ -8,6 +8,16 @@
 </head>
 <body>
 
+<header class="navbar">
+  <nav class="navbar_inner">
+      <%= link_to "Home", '/', id:"Home" %>
+      <%= link_to "Games", games_path, id:"Games" %>
+      <%= link_to "Events", '/', id:"Events" %>
+      <%= link_to "Sign Up", '/', id:"Sign_Up" %>
+      <%= link_to "Login", '/', id:"Login" %>
+  </nav>
+</header>
+
 <%= yield %>
 
 </body>
