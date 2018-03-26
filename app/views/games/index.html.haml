@@ -1,11 +1,9 @@
-%h1 Gamerverse
-
 %main{id: "main"}
   %section{id: "all-games"}
     %h1 Games
 
     -@games.each do |game|
-      %div{class: "game"}
+      %div{class: "games"}
         =image_tag(game.coverart, width: 150, alt: game.title)
         %p
           =game.title
