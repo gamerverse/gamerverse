@@ -1,7 +1,7 @@
-Feature: Home Page - Featured Games
+Feature: Games Page
  
   As a user,
-  I want to see a list of featured games,
+  I want to see a list of all games,
   So that I can see a possible list of games to play.
 
 Background: games have been added to database
@@ -19,11 +19,10 @@ Background: games have been added to database
   | Street Fighter V                      | /assets/covers/street_fighter_v.jpg         |
   | The Legend of Zelda: Ocarina of Time  | /assets/covers/zelda_ocarina_of_time.jpg    |
 
-  And I am on the Home page
+  And I am on the Games page
   Then 10 seed games should exist
   
-Scenario: featured games are shown on the homepage
-  Given I am on the Home page
-  Then I should see a Featured Games section
-  And I should see it populated with 5 games
-  
+Scenario: All games are shown on the homepage
+  Given I am on the Games page
+  Then I should see a Games section
+  And I should see it populated with 10 games

@@ -45,5 +45,5 @@ Then /^(?:|I )should see a (.+) section$/ do |section_name|
 end
   
 And /^(?:|I )should see it populated with (.+) games$/ do |num_games|
-  expect(page).to have_selector('.featured-game', count: num_games)
+  expect(page).to have_selector('.games', count: num_games)
 end
