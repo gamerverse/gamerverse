@@ -18,3 +18,4 @@ Run the application in the production environment (Heroku):
 
     heroku rake -a gamerverse db:migrate
     heroku rake -a gamerverse db:seed
+    git push heroku master
