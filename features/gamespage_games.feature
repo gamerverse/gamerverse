@@ -22,7 +22,7 @@ Background: games have been added to database
   And I am on the Games page
   Then 10 seed games should exist
   
-Scenario: All games are shown on the homepage
+Scenario: All games are shown on the games page
   Given I am on the Games page
   Then I should see a Games section
   And I should see it populated with 10 games

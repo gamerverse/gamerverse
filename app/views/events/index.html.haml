@@ -1,15 +1,6 @@
 %main{id: "main"}
-  %section{id: "featured-games"}
-    %h1 Featured Games
-    
-    -@games.each do |game|
-      %div{class: "games"}
-        =image_tag(game.coverart, width: 150, alt: game.title)
-        %p
-          =game.title
-          
-  %section{id: "featured-events"}
-    %h1 Featured Events
+  %section{id: "all-events"}
+    %h1 Events
     -@events.each do |event|
       %div{class: "events"}
         %div{class: "event_title"}

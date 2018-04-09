@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  
 </head>
 <body>
 
@@ -14,7 +15,7 @@
   <nav class="navbar_inner">
     <%= link_to "Home", '/', id:"Home" %>
     <%= link_to "Games", games_path, id:"Games" %>
-    <%= link_to "Events", '#', id:"Events" %>
+    <%= link_to "Events", events_path, id:"Events" %>
     <%= link_to "Sign Up", '#', id:"Sign_Up" %>
     <%= link_to "Login", '#', id:"Login" %>
   </nav>

@@ -47,3 +47,7 @@ end
 And /^(?:|I )should see it populated with (.+) games$/ do |num_games|
   expect(page).to have_selector('.games', count: num_games)
 end
+
+And /^(?:|I )should see it populated with (.+) events/ do |num_events|
+  expect(page).to have_selector('.events', count: num_events)
+end
