@@ -1,18 +1,18 @@
 %main{id: "main"}
-  %section{id: "all-events"}
+  %section{id: "events-section"}
     %h1 Events
-    -@events.each do |event|
-      %div{class: "events"}
-        %div{class: "event_title"}
-          Title: 
-          =event.title
-        %div{class: "event_date"}
-          Date: 
-          =event.date
-        %div{class: "event_location"}
-          Location: 
-          =event.location
-        %div{class: "event_description"} 
-          Description: 
-          =event.description
-        %br
+    
+    %ol{class: "event-list"}
+      -@events.each do |event|
+        %li{class: "event-list-item"}
+          %h2{class: "event-title"}
+            =event.title
+          %div{class: "event-date"}
+            Date: 
+            =event.date
+          %div{class: "event-location"}
+            Location: 
+            =event.location
+          %div{class: "event-description"} 
+            Description:
+            =event.description

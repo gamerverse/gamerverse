@@ -2,3 +2,19 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.event-list {
+  margin-bottom: 0;
+  -moz-padding-start: 0;
+  -webkit-padding-start: 0;
+}
+
+.event-list-item {
+  display: inline-block;
+  vertical-align: top;
+  width: 400px;
+}
+
+.event-title {
+  font-size: 1em;
+}

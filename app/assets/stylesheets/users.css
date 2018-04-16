@@ -1,0 +1,14 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+label {
+  display: block;
+  margin: 1em 0 .5em;
+}
+
+input[type="submit"] {
+  display: block;
+  margin-top: 1em;
+}

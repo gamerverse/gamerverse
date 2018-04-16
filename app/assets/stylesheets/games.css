@@ -2,3 +2,26 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.game-list {
+  margin-bottom: 0;
+  -moz-padding-start: 0;
+  -webkit-padding-start: 0;
+}
+
+.game-list-item {
+  display: inline-block;
+  margin-bottom: 1.5em;
+  padding: 0 0.5em;
+  vertical-align: top;
+  width: 150px;
+}
+
+.game-list-item figcaption {
+  line-height: 1.25;
+  width: 150px;
+}
+
+.game-list-item figure {
+  margin: 0;
+}

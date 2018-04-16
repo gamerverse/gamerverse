@@ -2,26 +2,28 @@
   %section{id: "featured-games"}
     %h1 Featured Games
     
-    -@games.each do |game|
-      %div{class: "games"}
-        =image_tag(game.coverart, width: 150, alt: game.title)
-        %p
-          =game.title
+    %ol{class: "game-list"}
+      -@games.each do |game|
+        %li{class: "game-list-item"}
+          %figure
+            =image_tag(game.coverart, width: 150, alt: game.title)
+            %figcaption
+              =game.title
           
   %section{id: "featured-events"}
     %h1 Featured Events
-    -@events.each do |event|
-      %div{class: "events"}
-        %div{class: "event_title"}
-          Title: 
-          =event.title
-        %div{class: "event_date"}
-          Date: 
-          =event.date
-        %div{class: "event_location"}
-          Location: 
-          =event.location
-        %div{class: "event_description"} 
-          Description: 
-          =event.description
-        %br
+    
+    %ol{class: "event-list"}
+      -@events.each do |event|
+        %li{class: "event-list-item"}
+          %h2{class: "event-title"}
+            =event.title
+          %div{class: "event-date"}
+            Date: 
+            =event.date
+          %div{class: "event-location"}
+            Location: 
+            =event.location
+          %div{class: "event-description"} 
+            Description:
+            =event.description

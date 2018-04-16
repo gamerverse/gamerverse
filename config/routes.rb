@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'users/register'
+  post 'users/create'
+
   resources :games
   resources :events
   

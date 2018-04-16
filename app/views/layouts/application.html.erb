@@ -1,27 +1,32 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Gamerverse</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  
-</head>
-<body>
-
-<h1>Gamerverse</h1>
-
-<header class="navbar">
-  <nav class="navbar_inner">
-    <%= link_to "Home", '/', id:"Home" %>
-    <%= link_to "Games", games_path, id:"Games" %>
-    <%= link_to "Events", events_path, id:"Events" %>
-    <%= link_to "Sign Up", '#', id:"Sign_Up" %>
-    <%= link_to "Login", '#', id:"Login" %>
-  </nav>
-</header>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>Gamerverse</title>
+    <meta charset="utf-8" />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'logos/icon.png' %>
+  </head>
+  <body>
+    <header id="header">
+      <h1>
+        <span id="header-site-title">Gamerverse</span>
+        <a href="/">
+          <%= image_tag("logos/logo.png", alt: "Gamerverse", id: "logo")%>
+        </a>
+      </h1>
+      <nav id="navbar">
+        <ul id="nav-list">
+          <li class="nav-list-item"><%= link_to "Home", '/' %></li>
+          <li class="nav-list-item"><%= link_to "Games", games_path %></li>
+          <li class="nav-list-item"><%= link_to "Events", events_path %></li>
+          <li class="nav-list-item"><%= link_to "Register", users_register_path %></li>
+          <li class="nav-list-item"><%= link_to "Login", '#' %></li>
+        </ul>
+      </nav>
+    </header>
+    <%= yield %>
+  </body>
 </html>

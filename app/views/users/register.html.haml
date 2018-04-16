@@ -1,0 +1,28 @@
+%main{id: "main"}
+  %section{id: "register-users"}
+    %h1 Registration
+    
+    %div{id: "errors"}
+      %ul
+        - flash.each do |key, value|
+          - value.each do |message|
+            %li
+              = message
+    
+    = form_tag users_create_path do
+      = label :user, :username, "Username"
+      = text_field :user, :username
+      
+      = label :user, :zipcode, "Zip Code"
+      = text_field :user, :zipcode
+      
+      = label :user, :email, "Email"
+      = text_field :user, :email
+      
+      = label :user, :password, "Password"
+      = password_field :user, :password
+      
+      = label :user, :password_confirmation, "Confirm Password"
+      = password_field :user, :password_confirmation
+      
+      = submit_tag "Submit"
