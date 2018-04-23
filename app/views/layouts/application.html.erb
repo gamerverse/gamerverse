@@ -22,8 +22,13 @@
           <li class="nav-list-item"><%= link_to "Home", '/' %></li>
           <li class="nav-list-item"><%= link_to "Games", games_path %></li>
           <li class="nav-list-item"><%= link_to "Events", events_path %></li>
-          <li class="nav-list-item"><%= link_to "Register", users_register_path %></li>
-          <li class="nav-list-item"><%= link_to "Login", '#' %></li>
+          
+          <% if !logged_in? %>
+          <li class="nav-list-item"><%= link_to "Register", register_path %></li>
+          <li class="nav-list-item"><%= link_to "Login", login_path %></li>
+          <% else %>
+          <li class="nav-list-item"><%= link_to "Logout", logout_path %></li>
+          <% end %>
         </ul>
       </nav>
     </header>

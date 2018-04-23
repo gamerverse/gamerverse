@@ -1,17 +1,15 @@
-class UsersController < ApplicationController
+class RegisterController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation, :zipcode, :bio)
   end
   
   public
-  # Registration page
-  def register
-    # TODO: Uncomment this out after we implement log-out
+  def index
     # If the user is logged in, redirect them to the home page
-    # if !session[:user_id].nil?
-    #   redirect_to "/"
-    # end
+    if !session[:user_id].nil?
+      redirect_to "/"
+    end
   end
 
   # When the user clicks submit on the registration page
@@ -32,7 +30,7 @@ class UsersController < ApplicationController
       if @user.errors.any?
         flash[:warning] = @user.errors.full_messages.uniq
         
-        redirect_to users_register_path
+        redirect_to register_path
       end
     end
   end

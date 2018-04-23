@@ -16,7 +16,7 @@ Given /^(?:|I )am on the (.+) page$/ do |page_name|
   if page_name.match(/home/)
     visit(homepage_index_path)
   elsif page_name.match(/register/)
-    visit(users_register_path)
+    visit(register_path)
   else
     visit(page_name)
   end
@@ -38,7 +38,7 @@ Then /^(?:|I )should be redirected to the (.+) page/ do |page_name|
   if(page_name.match(/home/))
     expect(page.current_path).to eq "/"
   elsif(page_name.match(/register/))
-    expect(page.current_path).to eq users_register_path
+    expect(page.current_path).to eq register_path
   else
     expect(page.current_path).to eq send("#{page_name}_path")
   end

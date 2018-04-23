@@ -1,0 +1,18 @@
+%main{id: "main"}
+  %section{id: "login-users"}
+    %h1 Login
+    
+    %div{id: "errors"}
+      - if flash[:warning]
+        %ul
+          %li
+            = flash[:warning]
+    
+    = form_tag login_path do
+      = label :user, :username, "Username"
+      = text_field :user, :username
+      
+      = label :user, :password, "Password"
+      = password_field :user, :password
+
+      = submit_tag "Submit"

@@ -16,6 +16,5 @@ Run the application in the development environment (AWS Cloud9):
 
 Run the application in the production environment (Heroku):
 
-    heroku rake -a gamerverse db:migrate
-    heroku rake -a gamerverse db:seed
-    git push heroku master
+    heroku restart -a gamerverse && heroku pg:reset DATABASE --confirm gamerverse && heroku run rake db:migrate
+

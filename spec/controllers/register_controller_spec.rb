@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :controller do
+RSpec.describe RegisterController, type: :controller do
 
-  describe "GET #register" do
+  describe "GET #index" do
     it "returns http success" do
-      get :register
+      get :index
       expect(response).to have_http_status(:success)
     end
   end
@@ -28,7 +28,7 @@ RSpec.describe UsersController, type: :controller do
                               zipcode: "12345", bio: "hello world"}}
         
         expect(flash[:warning]).to include("Username can't be blank")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
       
       it "fails if empty password" do
@@ -37,7 +37,7 @@ RSpec.describe UsersController, type: :controller do
                               zipcode: "12345", bio: "hello world"}}
         
         expect(flash[:warning]).to include("Password can't be blank")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
       
       it "fails if empty email" do
@@ -46,7 +46,7 @@ RSpec.describe UsersController, type: :controller do
                               zipcode: "12345", bio: "hello world"}}
         
         expect(flash[:warning]).to include("Email can't be blank")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
       
       it "fails if empty zipcode" do
@@ -55,7 +55,7 @@ RSpec.describe UsersController, type: :controller do
                               bio: "hello world"}}
         
         expect(flash[:warning]).to include("Zipcode can't be blank")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
       
       it "fails if empty password_confirmation" do
@@ -64,7 +64,7 @@ RSpec.describe UsersController, type: :controller do
                               zipcode: "12345", bio: "hello world"}}
         
         expect(flash[:warning]).to include("Password confirmation can't be blank")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
     end
     
@@ -75,7 +75,7 @@ RSpec.describe UsersController, type: :controller do
                               zipcode: "12345", bio: "hello world"}}
         
         expect(flash[:warning]).to include("Email is invalid")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
       
       it "fails if short zipcode" do
@@ -84,7 +84,7 @@ RSpec.describe UsersController, type: :controller do
                               zipcode: "1234", bio: "hello world"}}
         
         expect(flash[:warning]).to include("Zipcode is too short (minimum is 5 characters)")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
       
       it "fails if long zipcode" do
@@ -93,7 +93,7 @@ RSpec.describe UsersController, type: :controller do
                               zipcode: "123456", bio: "hello world"}}
         
         expect(flash[:warning]).to include("Zipcode is too long (maximum is 5 characters)")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
       
       it "fails if invalid zipcode" do
@@ -102,7 +102,7 @@ RSpec.describe UsersController, type: :controller do
                               zipcode: "abcde", bio: "hello world"}}
         
         expect(flash[:warning]).to include("Zipcode is invalid")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
       
       it "fails if duplicate email" do
@@ -115,7 +115,7 @@ RSpec.describe UsersController, type: :controller do
                               zipcode: "12345", bio: "hello world"}}
         
         expect(flash[:warning]).to include("Email has already been taken")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
       it "fails if duplicate username" do
         post :create, params: { user: {username: "test-user", email: "testemail@mail.com",
@@ -127,7 +127,7 @@ RSpec.describe UsersController, type: :controller do
                               zipcode: "12345", bio: "hello world"}}
         
         expect(flash[:warning]).to include("Username has already been taken")
-        expect(response).to redirect_to users_register_path
+        expect(response).to redirect_to register_path
       end
     end
   end

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  get 'users/register'
-  post 'users/create'
+  get '/register' => 'register#index'
+  post 'register/create'
+  
+  get '/login' => 'login#index'
+  post '/login' => 'login#create'
+  get '/logout' => 'login#logout'
 
   resources :games
   resources :events
