@@ -22,6 +22,24 @@ Given /^(?:|I )am on the (.+) page$/ do |page_name|
   end
 end
 
+Given /^(?:|I )am logged (.+)/ do |status|
+  # Log the user in before the test continues
+  if status.match(/in/)
+    visit(login_path)
+    
+    within("#login-users") do
+      fill_in 'Username', :with => 'test1'
+      fill_in 'Password', :with => 'testing123'
+    end
+    
+    click_button 'Submit'
+    visit(homepage_index_path)
+  # If logged out, just visit the home page
+  else
+    visit(homepage_index_path)
+  end
+end
+
 Then /^(?:|I )click the (.+) button/ do |button_name|
   click_button(button_name)
 end
@@ -47,7 +65,15 @@ end
 Then /^(?:|I )should see a (.+) section$/ do |section_name|
   expect(page.find('h1', text: section_name))
 end
-  
+
+Then /^(?:|I )should not see a (.+) link on the navigation bar$/ do |link_name|
+  expect(page).not_to have_selector('.nav-list-item', text: link_name)
+end
+
+Then /^(?:|I )should see a (.+) link on the navigation bar$/ do |link_name|
+  expect(page).to have_selector('.nav-list-item', text: link_name)
+end
+
 Then /^(?:|I )should see it populated with (.+) games$/ do |num_games|
   expect(page).to have_selector('.game-list-item', count: num_games)
 end
@@ -64,4 +90,14 @@ end
 Then /^(?:|I )should see an error message for (.+)/ do |field|
   #expect(flash[:warning]).to match(/#{field}/i)
   expect(page).to have_selector('div#errors', text: /#{field}/i)
+end
+
+Then /^(?:|I )should be logged (.+)$/ do |status|
+  #If logged in, expect logout link
+  if status.match(/in/)
+    expect(page).to have_selector('.nav-list-item', text: 'Logout')
+  #if logged out, expect login link
+  else 
+    expect(page).to have_selector('.nav-list-item', text: 'Login')
+  end
 end
