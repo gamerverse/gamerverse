@@ -23,6 +23,10 @@ class EventsController < ApplicationController
     # Submit the info to be create the event
     def submit
       if (session[:user_id] != nil)
+        # https://stackoverflow.com/a/13606990
+        event = params[:event]
+        event_params[:date] = Date.new event["date(1i)"].to_i, event["date(2i)"].to_i, event["date(3i)"].to_i
+        
         event = Event.new(event_params)
     
         # Check if the validations are successful and reutrn false if they're not

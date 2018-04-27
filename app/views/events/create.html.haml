@@ -15,7 +15,7 @@
       = text_field :event, :title
       
       = label :event, :date, "Date"
-      = select_date
+      = date_select('event', 'date', start_year: Date.today.year)
       
       = label :event, :location, "Location"
       = text_field :event, :location

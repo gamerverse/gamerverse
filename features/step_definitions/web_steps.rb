@@ -23,6 +23,8 @@ Given /^(?:|I )am on the (.+) page$/ do |page_name|
     visit(profile_path)
   elsif page_name.match(/events/) 
     visit(events_path)
+  elsif page_name.match(/create event/)
+    visit(events_create_path)
   elsif page_name.match(/games/) 
     visit(games_path)
   else
@@ -71,6 +73,8 @@ Then /^(?:|I )should be redirected to the (.+) page$/ do |page_name|
     expect(page.current_path).to eq register_path
   elsif(page_name.match(/edit profile/))
     expect(page.current_path).to eq profile_edit_path
+  elsif(page_name.match(/create event/))
+    expect(page.current_path).to eq events_create_path
   else
     expect(page.current_path).to eq send("#{page_name}_path")
   end
@@ -88,9 +92,19 @@ Then /^(?:|I )should see a (.+) link on the navigation bar$/ do |link_name|
   expect(page).to have_selector('.nav-list-item', text: link_name)
 end
 
-Then /^(?:|I )should see a (.+) link$/ do |link_name|
+Then /^(?:|I )(.+) see a (.+) link$/ do |should, link_name|
+  link = 'failure'
+  link_name.downcase!
   if(link_name.match(/edit profile/))
-    expect(page).to have_link(href: '/profile/edit')
+    link = '/profile/edit'
+  elsif(link_name.match(/create event/))
+    link = '/events/create'
+  end
+  
+  if(should.match(/should not/))
+    expect(page).not_to have_link(href: link)
+  elsif(should.match(/should/))
+    expect(page).to have_link(href: link)
   end
 end
 
@@ -103,7 +117,9 @@ Then /^(?:|I )should see it populated with (.+) events$/ do |num_events|
 end
 
 Then /^(?:|I )set (.+) to (.+)$/ do |field, value|
-  fill_in(field, :with => value)
+  if(!value.match(/nothing/))
+    fill_in(field, :with => value)
+  end
 end
 
 #And I should see an error message for Username
