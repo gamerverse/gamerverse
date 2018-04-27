@@ -5,7 +5,6 @@ Feature: User Registration
   So that I can have my own preferences and use all the website's features
 
 Background: users have been added to database
-
   Given the following users exist:
   | username | email           | password   | password_confirmation | zipcode | bio
   | test1    | test1@gmail.com | testing123 | testing123            | 11111   | hello1

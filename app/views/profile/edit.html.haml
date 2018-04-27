@@ -1,0 +1,23 @@
+%main{id: "main"}
+  %section{id: "edit-info"}
+    %h1 Edit Profile
+    
+    %div{id: "errors"}
+      %ul
+        - flash.each do |key, value|
+          - value.each do |message|
+            %li
+              = message
+    
+    = form_tag profile_edit_path do
+    
+      = label :user, :email, "Email"
+      = text_field :user, :email, :value => @user[:email]
+      
+      = label :user, :zipcode, "Zip Code"
+      = text_field :user, :zipcode, :value => @user[:zipcode]
+      
+      = label :user, :bio, "Bio"
+      = text_area :user, :bio, :value => @user[:bio]
+      
+      = submit_tag "Submit"

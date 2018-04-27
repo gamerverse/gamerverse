@@ -1,16 +1,23 @@
 Rails.application.routes.draw do
   get '/register' => 'register#index'
-  post 'register/create'
+  post 'register/create' => 'register#create'
   
   get '/login' => 'login#index'
   post '/login' => 'login#create'
   get '/logout' => 'login#logout'
+  
+  get '/profile' => 'profile#index'
+  get '/profile/edit' => 'profile#edit'
+  post '/profile/edit' => 'profile#submit'
+  
+  get '/events' => 'events#index'
+  get '/events/create' => 'events#create'
+  post '/events/create' => 'events#submit'
 
   resources :games
-  resources :events
+  #resources :events
   
   get 'homepage/index'
-
   root 'homepage#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

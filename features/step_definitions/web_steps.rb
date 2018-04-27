@@ -17,12 +17,20 @@ Given /^(?:|I )am on the (.+) page$/ do |page_name|
     visit(homepage_index_path)
   elsif page_name.match(/register/)
     visit(register_path)
+  elsif page_name.match(/edit profile/)
+    visit(profile_edit_path)
+  elsif page_name.match(/profile/) 
+    visit(profile_path)
+  elsif page_name.match(/events/) 
+    visit(events_path)
+  elsif page_name.match(/games/) 
+    visit(games_path)
   else
     visit(page_name)
   end
 end
 
-Given /^(?:|I )am logged (.+)/ do |status|
+Given /^(?:|I )am logged (.+)$/ do |status|
   # Log the user in before the test continues
   if status.match(/in/)
     visit(login_path)
@@ -40,23 +48,29 @@ Given /^(?:|I )am logged (.+)/ do |status|
   end
 end
 
-Then /^(?:|I )click the (.+) button/ do |button_name|
+Then /^(?:|I )click the (.+) button$/ do |button_name|
   click_button(button_name)
 end
 
-Then /^(?:|I )click the (.+) link on the navigation bar/ do |link_name|
+Then /^(?:|I )click the (.+) link$/ do |link_name|
+  click_link(link_name)
+end
+
+Then /^(?:|I )click the (.+) link on the navigation bar$/ do |link_name|
   within("nav#navbar") do
     click_link(link_name)
   end
 end
 
-Then /^(?:|I )should be redirected to the (.+) page/ do |page_name|
+Then /^(?:|I )should be redirected to the (.+) page$/ do |page_name|
   page_name.downcase!
-  
+
   if(page_name.match(/home/))
     expect(page.current_path).to eq "/"
   elsif(page_name.match(/register/))
     expect(page.current_path).to eq register_path
+  elsif(page_name.match(/edit profile/))
+    expect(page.current_path).to eq profile_edit_path
   else
     expect(page.current_path).to eq send("#{page_name}_path")
   end
@@ -74,21 +88,30 @@ Then /^(?:|I )should see a (.+) link on the navigation bar$/ do |link_name|
   expect(page).to have_selector('.nav-list-item', text: link_name)
 end
 
+Then /^(?:|I )should see a (.+) link$/ do |link_name|
+  if(link_name.match(/edit profile/))
+    expect(page).to have_link(href: '/profile/edit')
+  end
+end
+
 Then /^(?:|I )should see it populated with (.+) games$/ do |num_games|
   expect(page).to have_selector('.game-list-item', count: num_games)
 end
 
-Then /^(?:|I )should see it populated with (.+) events/ do |num_events|
+Then /^(?:|I )should see it populated with (.+) events$/ do |num_events|
   expect(page).to have_selector('.event-list-item', count: num_events)
 end
 
-Then /^(?:|I )set (.+) to (.+)/ do |field, value|
+Then /^(?:|I )set (.+) to (.+)$/ do |field, value|
   fill_in(field, :with => value)
 end
 
 #And I should see an error message for Username
-Then /^(?:|I )should see an error message for (.+)/ do |field|
+Then /^(?:|I )should see an error message for (.+)$/ do |field|
   #expect(flash[:warning]).to match(/#{field}/i)
+  if(field.match(/Zip Code/))
+    field.gsub!(' ','')
+  end
   expect(page).to have_selector('div#errors', text: /#{field}/i)
 end
 
@@ -99,5 +122,21 @@ Then /^(?:|I )should be logged (.+)$/ do |status|
   #if logged out, expect login link
   else 
     expect(page).to have_selector('.nav-list-item', text: 'Login')
+  end
+end
+
+Then /^(?:I )leave (.+) empty$/ do |field|
+  fill_in(field, :with => "")
+end
+
+Then /^(?:I )should see (.+) populated with the text (.+)$/ do |field, data|
+  field.downcase!
+  
+  if(field.match(/zip code/))
+    field = "zip-code"
+  end
+  
+  within("#user-info") do
+    expect(page).to have_selector("##{field}", text: data)
   end
 end

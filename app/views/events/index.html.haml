@@ -2,6 +2,9 @@
   %section{id: "events-section"}
     %h1 Events
     
+    -if logged_in?
+      = link_to "Create Event", events_create_path
+    
     %ol{class: "event-list"}
       -@events.each do |event|
         %li{class: "event-list-item"}

@@ -10,7 +10,6 @@ class User < ApplicationRecord
   validates :email,     presence: true, uniqueness: true,   format: EMAIL_REGEX
   validates :zipcode,   presence: true, uniqueness: false,  format: ZIPCODE_REGEX,  length: {in: 5..5}
   validates :password,  confirmation: true #password_confirmation attr
-  validates :password_confirmation, presence: true
   
   # Only check the password length when creating a new user
   validates_length_of :password, :in => 8..128, :on => :create

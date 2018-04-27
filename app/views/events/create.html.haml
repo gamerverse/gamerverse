@@ -1,0 +1,26 @@
+%main{id: "main"}
+  %section{id: "create-event"}
+    %h1 Create Event
+    
+    %div{id: "errors"}
+      %ul
+        - flash.each do |key, value|
+          - value.each do |message|
+            %li
+              = message
+    
+    = form_tag events_create_path do
+
+      = label :event, :title, "Title"
+      = text_field :event, :title
+      
+      = label :event, :date, "Date"
+      = select_date
+      
+      = label :event, :location, "Location"
+      = text_field :event, :location
+      
+      = label :event, :description, "Description"
+      = text_area :event, :description
+      
+      = submit_tag "Submit"

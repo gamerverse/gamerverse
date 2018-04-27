@@ -1,0 +1,29 @@
+%main{id: "main"}
+  %section{id: "user-info"}
+    %h1 Profile Page
+    %p
+      Username:
+      %span#username
+        =@user.username
+    
+    %p
+      Email:
+      %span#email
+        =@user[:email]
+    
+    %p
+      Zip Code:
+      %span#zip-code
+        =@user[:zipcode]
+    
+    %p
+      Bio:
+      %span#bio
+        =@user[:bio]
+    
+    = link_to "Edit Profile", profile_edit_path
+    
+  %section{id: "user-games"}
+    %h1 Favorited Games
+  %section{id: "user-events"}
+    %h1 Favorited Events

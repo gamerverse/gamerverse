@@ -22,8 +22,11 @@
  */
   
 a {
-  color: inherit;
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 body {
@@ -48,6 +51,14 @@ section h1 {
 
 .nav-list-item:hover {
   background-color: #6b0093;
+}
+
+.nav-list-item a {
+  color: inherit;
+}
+
+.nav-list-item a:hover {
+  text-decoration: none;
 }
 
 #header-site-title {
