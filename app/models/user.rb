@@ -13,4 +13,7 @@ class User < ApplicationRecord
   
   # Only check the password length when creating a new user
   validates_length_of :password, :in => 8..128, :on => :create
+  
+  has_many :favorite_games
+  has_many :games, through: :favorite_games
 end

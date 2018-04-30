@@ -42,7 +42,7 @@ RSpec.describe ProfileController, type: :controller do
     it "should make edits to a user if the user is logged in" do
       session[:user_id] = 1
       
-      fake_user = double({
+      fake_user = double("fake user", {
         username: "username",
         email: "username@gamerverse.com",
         zipcode: "11111",
@@ -57,10 +57,17 @@ RSpec.describe ProfileController, type: :controller do
         }
       }
       
+      allow(User).to(receive(:find_by_id).with(session[:user_id]).and_return(fake_user))
+      allow(fake_user).to(receive(:update))
+      
+      fake_errors = double("fake errors", {})
+      
+      allow(fake_user).to(receive(:errors)).and_return(fake_errors)
+      allow(fake_errors).to(receive(:any?))
+      allow(fake_user).to(receive(:save!))
+      
       post :submit, {params: params}
       
-      expect(User).to(receive(:find_by_id).with(session[:user_id]).and_return(fake_user))
-      expect(fake_user).to(receive(:update))
       expect(response).to(redirect_to(profile_path))
     end
     
