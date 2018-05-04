@@ -1,6 +1,9 @@
 class ProfileController < ApplicationController
   # Display the profile page
   def index
+    # Store all of the favorited games from the model in an instance variable so the view can access them
+    @favorite_games = FavoriteGame.where("user_id = #{session[:user_id]}").joins(:game).select(:title, :coverart)
+    
     if (session[:user_id] != nil)
       @user = User.find_by(id: session[:user_id])
     else

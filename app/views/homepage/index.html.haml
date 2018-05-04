@@ -8,7 +8,11 @@
           %figure
             =image_tag(game.coverart, width: 150, alt: game.title)
             %figcaption
-              =game.title
+              %span.game-title
+                =game.title
+                -if logged_in?
+                  %span.favorite-button
+                    = link_to "❤️",favorite_game_path(game, type: "favorite"), method: :put
           
   %section{id: "featured-events"}
     %h1 Featured Events
@@ -18,6 +22,9 @@
         %li{class: "event-list-item"}
           %h2{class: "event-title"}
             =event.title
+            -if logged_in?
+              %span.favorite-button
+                = link_to "❤️", events_path
           %div{class: "event-date"}
             Date: 
             =event.date

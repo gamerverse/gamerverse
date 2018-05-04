@@ -22,8 +22,18 @@
         =@user[:bio]
     
     = link_to "Edit Profile", profile_edit_path
-    
+  
   %section{id: "user-games"}
     %h1 Favorited Games
+    
+    %ol{class: "game-list"}
+      -@favorite_games.each do |game|
+        %li{class: "game-list-item"}
+          %figure
+            =image_tag(game.coverart, width: 150, alt: game.title)
+            %figcaption
+              %span.game-title
+                =game.title
+
   %section{id: "user-events"}
     %h1 Favorited Events

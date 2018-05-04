@@ -8,4 +8,13 @@
           %figure
             =image_tag(game.coverart, width: 150, alt: game.title)
             %figcaption
-              =game.title
+              %span.game-title
+                =game.title
+                -if logged_in?
+                  -if !@favorite_games.include?(game)
+                    %span.favorite-button
+                      = link_to "❤️",favorite_game_path(game, type: "favorite"), method: :put
+                  -else
+                    %span.unfavorite-button
+                      = link_to "❌️",favorite_game_path(game, type: "unfavorite"), method: :put
+                      

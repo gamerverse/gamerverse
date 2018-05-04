@@ -14,8 +14,12 @@ Rails.application.routes.draw do
   get '/events/create' => 'events#create'
   post '/events/create' => 'events#submit'
 
-  resources :games
+  #post '/games/favorite' => 'games#favorite'
+  resources :games do
+    put :favorite, on: :member
+  end
   #resources :events
+  
   
   get 'homepage/index'
   root 'homepage#index'

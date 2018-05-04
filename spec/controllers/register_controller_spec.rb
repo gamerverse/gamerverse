@@ -58,12 +58,12 @@ RSpec.describe RegisterController, type: :controller do
         expect(response).to redirect_to register_path
       end
       
-      it "fails if empty password_confirmation" do
+      it "fails if passwords don't match" do
         post :create, params: { user: {username: "test-user",  email: "testemail@mail.com",
-                              password: "testpass123",
+                              password: "testpass123", password_confirmation: "testpass1234",
                               zipcode: "12345", bio: "hello world"}}
         
-        expect(flash[:warning]).to include("Password confirmation can't be blank")
+        expect(flash[:warning]).to include("Password confirmation doesn't match Password")
         expect(response).to redirect_to register_path
       end
     end

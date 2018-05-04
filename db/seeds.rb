@@ -40,3 +40,6 @@ description: "First 3 Bloods Wins", date: DateTime.new(2015,2,24,06))
 
 User.create(username: "username", password: "password", password_confirmation: "password",
             email: "username@gmail.com", zipcode: 11111)
+            
+#-------------------FAVORITE GAMES-------------------
+FavoriteGame.create(user_id: 1, game_id: 1)

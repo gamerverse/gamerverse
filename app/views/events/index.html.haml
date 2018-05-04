@@ -10,6 +10,9 @@
         %li{class: "event-list-item"}
           %h2{class: "event-title"}
             =event.title
+            -if logged_in?
+              %span.favorite-button
+                = link_to "❤️", events_path
           %div{class: "event-date"}
             Date: 
             =event.date
