@@ -43,3 +43,6 @@ User.create(username: "username", password: "password", password_confirmation: "
             
 #-------------------FAVORITE GAMES-------------------
 FavoriteGame.create(user_id: 1, game_id: 1)
+
+#-------------------FAVORITE EVENT-------------------
+FavoriteEvent.create(user_id: 1, event_id: 1)

@@ -10,7 +10,7 @@ World(WithinHelpers)
 
 #---------------------------------------
 
-Given /^(?:|I )am on the (.+) page$/ do |page_name|
+Given /(?:|I )am on the (.+) page$/ do |page_name|
   page_name.downcase!
   
   if page_name.match(/home/)
@@ -50,6 +50,20 @@ Given /^(?:|I )am logged (.+)$/ do |status|
   end
 end
 
+When /^(?:|I )click the (.+) button for (.+)$/ do |button_name, section|
+  if(button_name == "Favorite")
+    click_link("❤️")
+  elsif(button_name == "Unfavorite")
+    click_link("❌️")
+  elsif(button_name == "Attend")
+    click_link("Attend")
+  elsif(button_name == "Unattend")
+    click_link("Unattend")
+  end
+  
+  
+end
+
 Then /^(?:|I )click the (.+) button$/ do |button_name|
   click_button(button_name)
 end
@@ -75,6 +89,8 @@ Then /^(?:|I )should be redirected to the (.+) page$/ do |page_name|
     expect(page.current_path).to eq profile_edit_path
   elsif(page_name.match(/create event/))
     expect(page.current_path).to eq events_create_path
+  elsif(page_name.match(/games/))
+    expect(page.current_path).to eq games_path
   else
     expect(page.current_path).to eq send("#{page_name}_path")
   end
@@ -108,12 +124,12 @@ Then /^(?:|I )(.+) see a (.+) link$/ do |should, link_name|
   end
 end
 
-Then /^(?:|I )should see it populated with (.+) games$/ do |num_games|
-  expect(page).to have_selector('.game-list-item', count: num_games)
-end
-
-Then /^(?:|I )should see it populated with (.+) events$/ do |num_events|
-  expect(page).to have_selector('.event-list-item', count: num_events)
+Then /^(?:|I )should see it populated with (.+) (.+)/ do |num, type|
+  if(type == "games")
+    expect(page).to have_selector('.game-list-item', count: num)
+  elsif(type == "events")
+    expect(page).to have_selector('.event-list-item', count: num)
+  end
 end
 
 Then /^(?:|I )set (.+) to (.+)$/ do |field, value|
@@ -154,5 +170,13 @@ Then /^(?:I )should see (.+) populated with the text (.+)$/ do |field, data|
   
   within("#user-info") do
     expect(page).to have_selector("##{field}", text: data)
+  end
+end
+
+And /^(?: I)(.+) see (.+) in the (.+) section$/ do |should, data, section|
+  if(should.match(/should not/))
+    expect(page).not_to have_selector("#{section}", text: data)
+  elsif(should.match(/should/))
+    expect(page).to have_selector("#{section}", text: data)
   end
 end

@@ -11,12 +11,39 @@ class EventsController < ApplicationController
     def index
       # Store all of the events from the model in an instance variable so the view can access them
       @events = Event.all
+      
+      @favorite_events
+      @favorite_event_ids
+      if(logged_in?)
+        @favorite_events = FavoriteEvent.where("user_id = #{session[:user_id]}")
+        @favorite_event_ids = @favorite_events.map{|event| event.event_id}
+      end
     end
     
     # Display the create events page
     def create
       if (session[:user_id] == nil)
         redirect_to login_path
+      end
+    end
+    
+    def favorite
+      type = params[:type]
+      event = Event.find(params[:id])
+      current_user = User.find(session[:user_id])
+      
+      if type == "attend"
+        favorite_event = FavoriteEvent.new(user_id: current_user.id, event_id: event.id)
+        favorite_event.save
+        redirect_to params[:path]
+  
+      elsif type == "unattend"
+        FavoriteEvent.find_by(user_id: current_user.id, event_id: event.id).destroy
+          
+        redirect_to params[:path]
+      else
+        # Type missing, nothing happens
+        redirect_to "/"
       end
     end
     

@@ -11,8 +11,12 @@
               %span.game-title
                 =game.title
                 -if logged_in?
-                  %span.favorite-button
-                    = link_to "❤️",favorite_game_path(game, type: "favorite"), method: :put
+                  -if !@favorite_game_ids.include?(game.id)
+                    %span.favorite-button
+                      = link_to "❤️", favorite_game_path(game, type: "favorite", path: "/"), method: :put
+                  -else
+                    %span.unfavorite-button
+                      = link_to "❌️", favorite_game_path(game, type: "unfavorite", path: "/"), method: :put
           
   %section{id: "featured-events"}
     %h1 Featured Events
@@ -23,8 +27,12 @@
           %h2{class: "event-title"}
             =event.title
             -if logged_in?
-              %span.favorite-button
-                = link_to "❤️", events_path
+              -if !@favorite_event_ids.include?(event.id)
+                %span.favorite-button
+                  = link_to "Attend",favorite_event_path(event, type: "attend", path: "/"), method: :put
+              -else
+                %span.unfavorite-button
+                  = link_to "Unattend",favorite_event_path(event, type: "unattend", path: "/"), method: :put
           %div{class: "event-date"}
             Date: 
             =event.date

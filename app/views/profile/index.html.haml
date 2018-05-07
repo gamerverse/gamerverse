@@ -24,7 +24,7 @@
     = link_to "Edit Profile", profile_edit_path
   
   %section{id: "user-games"}
-    %h1 Favorited Games
+    %h1 Favorite Games
     
     %ol{class: "game-list"}
       -@favorite_games.each do |game|
@@ -34,6 +34,30 @@
             %figcaption
               %span.game-title
                 =game.title
+              %span.unfavorite-button
+                = link_to "❌️",favorite_game_path(game, type: "unfavorite", path: profile_path), method: :put
 
   %section{id: "user-events"}
-    %h1 Favorited Events
+    %h1 Events I'm Attending
+    
+    %ol{class: "event-list"}
+      -@favorite_events.each do |event|
+        %li{class: "event-list-item"}
+          %h2{class: "event-title"}
+            =event.title
+            -if logged_in?
+              -if !@favorite_event_ids.include?(event.id)
+                %span.favorite-button
+                  = link_to "Attend",favorite_event_path(event, type: "attend", path: profile_path), method: :put
+              -else
+                %span.unfavorite-button
+                  = link_to "Unattend",favorite_event_path(event, type: "unattend", path: profile_path), method: :put
+          %div{class: "event-date"}
+            Date: 
+            =event.date
+          %div{class: "event-location"}
+            Location: 
+            =event.location
+          %div{class: "event-description"} 
+            Description:
+            =event.description

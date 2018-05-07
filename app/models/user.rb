@@ -20,4 +20,7 @@ class User < ApplicationRecord
   
   has_many :favorite_games
   has_many :games, through: :favorite_games
+  
+  has_many :favorite_events
+  has_many :events, through: :favorite_events
 end

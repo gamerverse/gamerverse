@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   get '/events' => 'events#index'
   get '/events/create' => 'events#create'
   post '/events/create' => 'events#submit'
-
+  
+  #post '/events/favorite' => 'events#favorite'
+  resources :events do
+    put :favorite, on: :member
+  end
+  
   #post '/games/favorite' => 'games#favorite'
   resources :games do
     put :favorite, on: :member

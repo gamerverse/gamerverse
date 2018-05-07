@@ -11,10 +11,10 @@
               %span.game-title
                 =game.title
                 -if logged_in?
-                  -if !@favorite_games.include?(game)
+                  -if !@favorite_game_ids.include?(game.id)
                     %span.favorite-button
-                      = link_to "❤️",favorite_game_path(game, type: "favorite"), method: :put
+                      = link_to "❤️",favorite_game_path(game, type: "favorite", path: games_path), method: :put
                   -else
                     %span.unfavorite-button
-                      = link_to "❌️",favorite_game_path(game, type: "unfavorite"), method: :put
+                      = link_to "❌️",favorite_game_path(game, type: "unfavorite", path: games_path), method: :put
                       

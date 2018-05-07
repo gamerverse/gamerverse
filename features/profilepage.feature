@@ -16,8 +16,8 @@ Scenario: View the profile page
   Given I am on the Profile page
   Then I should see a Profile Page section
   And I should see a Profile Page section
-  And I should see a Favorited Games section
-  And I should see a Favorited Events section
+  And I should see a Favorite Games section
+  And I should see a Events I'm Attending section
   And I should see a Edit Profile link
 
 Scenario: Click on the Edit Profile link

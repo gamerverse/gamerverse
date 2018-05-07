@@ -7,10 +7,11 @@ Feature: Favorite Games
 Background: games and users have been added to database
 
   Given the following games exist:
-  | title                                 | coverart                                    |
-  | League of Legends                     | /assets/covers/league_of_legends.jpg        |
+  | title                                 | coverart                            |
+  | Overwatch                             | /assets/covers/overwatch.jpg        |
+  | Hearthstone                           | /assets/covers/hearthstone.jpg      |
   
-  Then 1 seed games should exist
+  Then 2 seed games should exist
   
   Given the following users exist:
   | username | email           | password   | password_confirmation | zipcode | bio
@@ -18,26 +19,26 @@ Background: games and users have been added to database
 
   Then 1 seed users should exist
   
+  Given the following favorite games exist:
+  | game_id       | user_id   |
+  | 2             | 1         |
+  
+  Then 1 seed favorite games should exist
+  
 Scenario: Favorite a Game
   Given I am logged in
-  And I am on the Games Page
-  When I click the Favorite button for League of Legends
-  Then I should be redirected to the Games Page
+  Given I am on the Games page
+  When I click the Favorite button for Overwatch
+  Then I should be redirected to the Games page
   And I click the Profile link on the navigation bar
-  And I should see League of Legends in the Favorite Games section
-  
-Scenario: Favoriting an already favorited game
-  Given I am logged in
-  And League of Legends is favorited by me
-  When I go to the Games Page
-  And I click the Favorite button for League of Legends
-  Then I should be redirected to the Games Page
-  And I should see an error message for Favorite Game
+  Then I should see a Favorite Games section
+  And I should see it populated with 2 games
   
 Scenario: Unfavoriting a game
   Given I am logged in
-  And I am on the Profile Page
-  When I click the Unfavorite button for League of Legends
-  Then I should be redirected to the Games Page
+  Given I am on the Games page
+  When I click the Unfavorite button for Hearthstone
+  Then I should be redirected to the Games page
   And I click the Profile link on the navigation bar
-  And I should not see League of Legends in the Favorite Games section
+  Then I should see a Favorite Games section
+  And I should see it populated with 0 games
