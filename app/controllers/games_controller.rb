@@ -1,7 +1,19 @@
 class GamesController < ApplicationController
   def index
+    
+    @games = {}
+    @ordered_games = Game.all.order("favorite_count DESC")
+    @ordered_games.each do |game|
+      if(@games[game.genre])
+        @games[game.genre].push(game)
+      else
+        @games[game.genre] = [game]
+      end
+    end
+    
+    @sorted_keys = @games.keys.sort
+    
     # Store all of the games from the model in an instance variable so the view can access them
-    @games = Game.all.order("favorite_count DESC")
     @favorite_games
     @favorite_game_ids
     if(logged_in?)

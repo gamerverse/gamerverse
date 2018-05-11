@@ -8,7 +8,7 @@
 }
 
 .event-list {
-  margin-bottom: 0;
+  margin: 0;
   -moz-padding-start: 0;
   -webkit-padding-start: 0;
 }
@@ -21,4 +21,5 @@
 
 .event-title {
   font-size: 1em;
+  margin-top: 0;
 }

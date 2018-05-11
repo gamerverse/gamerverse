@@ -43,6 +43,7 @@ class EventsController < ApplicationController
         if(favoriteEntry != nil)
           favoriteEntry.destroy
         end
+        
         if(event.attending_count > 0)
           Event.decrement_counter(:attending_count, event.id)
         end
@@ -57,13 +58,18 @@ class EventsController < ApplicationController
     def submit
       if (session[:user_id] != nil)
         # https://stackoverflow.com/a/13606990
-        event = params[:event]
-        event_params[:date] = Date.new event["date(1i)"].to_i, event["date(2i)"].to_i, event["date(3i)"].to_i
         
-        event = Event.new(event_params)
+        event_params()[:date] = Date.new(
+          params[:event]["date(1i)"].to_i,
+          params[:event]["date(2i)"].to_i,
+          params[:event]["date(3i)"].to_i
+        )
+        
+        event = Event.new(event_params())
+        
         event.attending_count = 0
     
-        # Check if the validations are successful and reutrn false if they're not
+        # Check if the validations are successful and return false if they're not
         # If validations fail, abort and do not save
         # http://api.rubyonrails.org/classes/ActiveRecord/Persistence.html#method-i-save
         if event.save

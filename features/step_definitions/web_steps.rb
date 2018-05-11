@@ -60,8 +60,6 @@ When /^(?:|I )click the (.+) button for (.+)$/ do |button_name, section|
   elsif(button_name == "Unattend")
     click_link("Unattend")
   end
-  
-  
 end
 
 Then /^(?:|I )click the (.+) button$/ do |button_name|
@@ -173,10 +171,28 @@ Then /^(?:I )should see (.+) populated with the text (.+)$/ do |field, data|
   end
 end
 
-And /^(?: I)(.+) see (.+) in the (.+) section$/ do |should, data, section|
+And /^(?:I )(.+) see (.+) in the (.+) section$/ do |should, data, section|
   if(should.match(/should not/))
     expect(page).not_to have_selector("#{section}", text: data)
   elsif(should.match(/should/))
     expect(page).to have_selector("#{section}", text: data)
+  end
+end
+
+And /^(?:I )should see (.+) before (.+)$/ do |obj1, obj2|
+  if page.body.index(obj1) > page.body.index(obj2)
+    expect(page).to have_selector("this-is-impossible")
+  end
+end
+
+Then /^(?:I )should see the (.+) genre$/ do |genre|
+  expect(page.find('h2', text: genre))
+end
+
+And /^(?:I )should see (.+) in the (.+) genre/ do |game, genre|
+  genre = genre.gsub(' ', '-')
+  
+  within("##{genre}-section") do
+    expect(page).to have_content(game)
   end
 end

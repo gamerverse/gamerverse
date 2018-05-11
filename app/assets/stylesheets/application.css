@@ -37,15 +37,23 @@ body {
 
 main {
   margin: 2em auto;
-  width: 75%;
+  width: 87.5%;
 }
 
 section {
-  margin-bottom: 2em;
+  padding-bottom: 1em;
 }
 
 section h1 {
   margin-top: 0;
+}
+
+section h2 {
+  font-size: 1.25em;
+}
+
+.games-section {
+  margin-bottom: 2em;
 }
 
 .nav-list-item {
@@ -63,6 +71,14 @@ section h1 {
 
 .nav-list-item a:hover {
   text-decoration: none;
+}
+
+#genres-section {
+  padding-bottom: 0;
+}
+
+#genres-section h2 {
+  margin-top: 0;
 }
 
 #header-site-title {

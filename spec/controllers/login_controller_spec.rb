@@ -4,12 +4,13 @@ RSpec.describe LoginController, type: :controller do
 
   describe "GET #index" do
     it "redirect to homepage if session != nil" do
-      session[:user_id] = "test"
+      session[:user_id] = 1
       get :index
       expect(response).to redirect_to("/")
     end
     
     it "redirect to login page if session == nil" do
+      session[:user_id] = nil
       get :index
       expect(response).to have_http_status(:success)
     end
@@ -55,7 +56,6 @@ RSpec.describe LoginController, type: :controller do
   end
   
   describe "POST #logout" do
-    
     it "redirect to homepage if session == nil" do
       post :logout
       expect(response).to redirect_to("/")

@@ -6,41 +6,20 @@ RSpec.describe EventsController, type: :controller do
       get :index
       expect(response).to have_http_status(:success)
     end
-    
-    it "displays all events when not logged in" do
-      # fake_events = {
-      #   double("fake event 1", {
-      #     id: 1, 
-      #     title: "Smash LAN Party", 
-      #     location: "Smashville", 
-      #     description: "LAN party for the best Smash players!", 
-      #     date: DateTime.new(2018,4,8,12),
-      #     attending_count: 1
-      #   }),
-      #   double("fake event 2", {
-      #     id: 2, 
-      #     title: "Smash LAN Party 2", 
-      #     location: "Smashville 2", 
-      #     description: "LAN party for the best Smash players! 2", 
-      #     date: DateTime.new(2018,4,8,12),
-      #     attending_count: 0
-      #   })
-      # }
+  end
+  
+  describe "GET #create" do
+    it "redirects to login page if not logged in" do
+      session[:user_id] = nil
       
-      # fake_user = double("fake user", {
-      #   id: 1,
-      #   username: "username",
-      #   email: "username@gamerverse.com",
-      #   zipcode: "11111",
-      #   bio: "bio"
-      # })
+      get :create
       
-      # allow(Event).to(receive(:all).and_return(fake_events))
+      expect(response).to(redirect_to(login_path))
     end
   end
   
   describe "PUT #favorite" do
-    it "favorite returns redirect" do
+    it "attend returns redirect" do
       session[:user_id] = 1
       
       params = {
@@ -79,7 +58,7 @@ RSpec.describe EventsController, type: :controller do
       expect(response).to(redirect_to(events_path))
     end
     
-    it "unfavorite returns redirect" do
+    it "unattend returns redirect" do
       session[:user_id] = 1
       
       params = {
@@ -167,27 +146,74 @@ RSpec.describe EventsController, type: :controller do
       it "no errors, creates an event" do
         session[:user_id] = 1
         
-        # bottom isn't working, can't figure out how to fix the issue
+        ActionController::Parameters.permit_all_parameters = true
         
-        # events_params = {
-        #   title: "Smash LAN Party", 
-        #   location: "Smashville", 
-        #   description: "LAN party for the best Smash players!", 
-        #   date: DateTime.new(2018,4,8,12)
-        # }
+        params = {
+          event: {
+            title: "Smash LAN Party", 
+            location: "Smashville", 
+            description: "LAN party for the best Smash players!",
+            "date(1i)" => "2012",
+            "date(2i)" => "11",
+            "date(3i)" => "28"
+          }
+        }
         
-        # fake_event = double("fake event", {
-        #   id: 1, 
-        #   title: "Smash LAN Party", 
-        #   location: "Smashville", 
-        #   description: "LAN party for the best Smash players!", 
-        #   date: DateTime.new(2018,4,8,12),
-        #   attending_count: 0
-        # })
+        event_params = ActionController::Parameters.new({
+          title: "Smash LAN Party", 
+          location: "Smashville", 
+          description: "LAN party for the best Smash players!"
+        })
         
-        # allow(Event).to(receive(:new).with(events_params).and_return(fake_event))
+        fake_event = double("fake event")
         
-        # post :submit, {params: {:event => events_params}}
+        allow_any_instance_of(EventsController).to(receive(:event_params).and_return(event_params))
+        allow(Event).to(receive(:new).with(event_params).and_return(fake_event))
+        allow(fake_event).to(receive(:attending_count=).and_return(0))
+        allow(fake_event).to(receive(:save).and_return(true))
+        
+        post :submit, {params: params}
+        
+        expect(response).to(redirect_to(events_path))
+      end
+      
+      it "errors, doesn't create an event" do
+        session[:user_id] = 1
+        
+        ActionController::Parameters.permit_all_parameters = true
+        
+        params = {
+          event: {
+            location: "Smashville", 
+            description: "LAN party for the best Smash players!",
+            "date(1i)" => "2012",
+            "date(2i)" => "11",
+            "date(3i)" => "28"
+          }
+        }
+        
+        event_params = ActionController::Parameters.new({
+          location: "Smashville", 
+          description: "LAN party for the best Smash players!"
+        })
+        
+        fake_event = double("fake event")
+        fake_receive_return = double("fake receive return")
+        fake_full_messages = double("fake full messages")
+        fake_uniq_messages = double("fake unique messages")
+        
+        allow_any_instance_of(EventsController).to(receive(:event_params).and_return(event_params))
+        allow(Event).to(receive(:new).with(event_params).and_return(fake_event))
+        allow(fake_event).to(receive(:attending_count=).and_return(0))
+        allow(fake_event).to(receive(:save).and_return(false))
+        allow(fake_event).to(receive(:errors)).and_return(fake_receive_return)
+        allow(fake_receive_return).to(receive(:any?)).and_return(true)
+        allow(fake_receive_return).to(receive(:full_messages)).and_return(fake_full_messages)
+        allow(fake_full_messages).to(receive(:uniq)).and_return(fake_uniq_messages)
+        
+        post :submit, {params: params}
+        
+        expect(response).to(redirect_to(events_create_path))
       end
     end
   end
