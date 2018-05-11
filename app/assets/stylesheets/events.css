@@ -3,6 +3,10 @@
   They will automatically be included in application.css.
 */
 
+.event-attending-count {
+  color: gray;
+}
+
 .event-list {
   margin-bottom: 0;
   -moz-padding-start: 0;

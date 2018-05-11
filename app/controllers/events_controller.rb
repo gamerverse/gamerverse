@@ -2,7 +2,7 @@ class EventsController < ApplicationController
     private
     
     def event_params
-      params.require(:event).permit(:title, :date, :location, :description)
+      params.require(:event).permit(:title, :date, :location, :description, :attending_count)
     end
     
     public
@@ -10,7 +10,7 @@ class EventsController < ApplicationController
     # Display the events page
     def index
       # Store all of the events from the model in an instance variable so the view can access them
-      @events = Event.all
+      @events = Event.all.order("attending_count DESC")
       
       @favorite_events
       @favorite_event_ids
@@ -35,11 +35,17 @@ class EventsController < ApplicationController
       if type == "attend"
         favorite_event = FavoriteEvent.new(user_id: current_user.id, event_id: event.id)
         favorite_event.save
+        Event.increment_counter(:attending_count, event.id)
         redirect_to params[:path]
   
       elsif type == "unattend"
-        FavoriteEvent.find_by(user_id: current_user.id, event_id: event.id).destroy
-          
+        favoriteEntry = FavoriteEvent.find_by(user_id: current_user.id, event_id: event.id)
+        if(favoriteEntry != nil)
+          favoriteEntry.destroy
+        end
+        if(event.attending_count > 0)
+          Event.decrement_counter(:attending_count, event.id)
+        end
         redirect_to params[:path]
       else
         # Type missing, nothing happens
@@ -55,6 +61,7 @@ class EventsController < ApplicationController
         event_params[:date] = Date.new event["date(1i)"].to_i, event["date(2i)"].to_i, event["date(3i)"].to_i
         
         event = Event.new(event_params)
+        event.attending_count = 0
     
         # Check if the validations are successful and reutrn false if they're not
         # If validations fail, abort and do not save

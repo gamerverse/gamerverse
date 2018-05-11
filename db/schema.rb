@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180506225426) do
+ActiveRecord::Schema.define(version: 20180507200351) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180506225426) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "attending_count"
   end
 
   create_table "favorite_events", force: :cascade do |t|
@@ -41,6 +42,8 @@ ActiveRecord::Schema.define(version: 20180506225426) do
     t.string "coverart"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "favorite_count"
+    t.string "genre"
   end
 
   create_table "users", force: :cascade do |t|

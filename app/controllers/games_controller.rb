@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   def index
     # Store all of the games from the model in an instance variable so the view can access them
-    @games = Game.all
+    @games = Game.all.order("favorite_count DESC")
     @favorite_games
     @favorite_game_ids
     if(logged_in?)
@@ -19,11 +19,18 @@ class GamesController < ApplicationController
     if type == "favorite"
       favorite_game = FavoriteGame.new(user_id: current_user.id, game_id: game.id)
       favorite_game.save
+      Game.increment_counter(:favorite_count, game.id)
       redirect_to params[:path]
 
     elsif type == "unfavorite"
-      FavoriteGame.find_by(user_id: current_user.id, game_id: game.id).destroy
-        
+      favoriteEntry = FavoriteGame.find_by(user_id: current_user.id, game_id: game.id)
+      if(favoriteEntry != nil)
+        favoriteEntry.destroy
+      end
+      
+      if(game.favorite_count > 0)
+        Game.decrement_counter(:favorite_count, game.id)
+      end
       redirect_to params[:path]
     else
       # Type missing, nothing happens
