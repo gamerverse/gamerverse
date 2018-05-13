@@ -5,58 +5,47 @@
       Username:
       %span#username
         =@user.username
-    
     %p
       Email:
       %span#email
         =@user[:email]
-    
     %p
       Zip Code:
       %span#zip-code
         =@user[:zipcode]
-    
     %p
       Bio:
       %span#bio
         =@user[:bio]
-    
-    = link_to "Edit Profile", profile_edit_path
+    %p
+      = link_to "Edit Profile", profile_edit_path
   
   %section{id: "user-games"}
     %h1 Favorite Games
-    
-    %ol{class: "game-list"}
-      -if @favorite_games.empty?
-        You currently have no favorite games. Go find something to play!
-      -@favorite_games.each do |game|
-        %li{class: "game-list-item"}
-          %figure
-            =image_tag(game.coverart, width: 150, alt: game.title)
-            %figcaption
-              %span.game-title
-                =game.title
-              %span.unfavorite-button
-                = link_to "❌️",favorite_game_path(game, type: "unfavorite", path: profile_path), method: :put
+    -if @favorite_games.empty?
+      %p You currently have no favorite games. Go find something to play!
+    -else
+      %ol{class: "game-list"}
+        -@favorite_games.each do |game|
+          %li{class: "game-list-item"}
+            %figure
+              =image_tag(game.coverart, width: 150, alt: game.title)
+              %figcaption
+                %div.game-title
+                  =game.title
+                  %span.unfavorite-button
+                    = link_to "❌️",favorite_game_path(game, type: "unfavorite", path: profile_path), method: :put
 
   %section{id: "user-events"}
     %h1 Events I'm Attending
-    
-    %ol{class: "event-list"}
-      -if @favorite_events.empty?
-        You're currently not attending any events. Get out there and explore!
-      -else
+    -if @favorite_events.empty?
+      %p You're currently not attending any events. Get out there and explore!
+    -else
+      %ol{class: "event-list"}
         -@favorite_events.each do |event|
           %li{class: "event-list-item"}
             %h2{class: "event-title"}
               =event.title
-              -if logged_in?
-                -if !@favorite_event_ids.include?(event.id)
-                  %span.favorite-button
-                    = link_to "Attend",favorite_event_path(event, type: "attend", path: profile_path), method: :put
-                -else
-                  %span.unfavorite-button
-                    = link_to "Unattend",favorite_event_path(event, type: "unattend", path: profile_path), method: :put
             %div{class: "event-date"}
               Date: 
               =event.date
@@ -66,3 +55,10 @@
             %div{class: "event-description"} 
               Description:
               =event.description
+            -if logged_in?
+              -if !@favorite_event_ids.include?(event.id)
+                %div.favorite-button
+                  = link_to "Attend",favorite_event_path(event, type: "attend", path: profile_path), method: :put
+              -else
+                %div.unfavorite-button
+                  = link_to "Unattend",favorite_event_path(event, type: "unattend", path: profile_path), method: :put

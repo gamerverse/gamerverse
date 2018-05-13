@@ -29,13 +29,6 @@
         %li{class: "event-list-item"}
           %h2{class: "event-title"}
             =event.title
-            -if logged_in?
-              -if !@favorite_event_ids.include?(event.id)
-                %span.favorite-button
-                  = link_to "Attend",favorite_event_path(event, type: "attend", path: "/"), method: :put
-              -else
-                %span.unfavorite-button
-                  = link_to "Unattend",favorite_event_path(event, type: "unattend", path: "/"), method: :put
           %div{class: "event-date"}
             Date: 
             =event.date
@@ -48,3 +41,10 @@
           %div{class: "event-attending-count"}
             =event.attending_count
             attendees
+            -if logged_in?
+              -if !@favorite_event_ids.include?(event.id)
+                %span.favorite-button
+                  = link_to "Attend",favorite_event_path(event, type: "attend", path: "/"), method: :put
+              -else
+                %span.unfavorite-button
+                  = link_to "Unattend",favorite_event_path(event, type: "unattend", path: "/"), method: :put
