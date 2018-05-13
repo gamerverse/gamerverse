@@ -87,8 +87,3 @@ description: "First 2 Bloods Wins", date: DateTime.new(2015,2,23,06), attending_
 
 Event.create(title: "League 3v3", location: "Twisted Treeline", 
 description: "First 3 Bloods Wins", date: DateTime.new(2015,2,24,06), attending_count: 0)
-
-#-------------------USERS-------------------
-
-User.create(username: "username", password: "password", password_confirmation: "password",
-            email: "username@gmail.com", zipcode: 11111)

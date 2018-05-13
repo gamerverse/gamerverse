@@ -3,7 +3,8 @@
     %h1 Events
     
     -if logged_in?
-      = link_to "Create Event", events_create_path
+      %p
+        = link_to "Create Event", events_create_path
     
     %ol{class: "event-list"}
       -@events.each do |event|

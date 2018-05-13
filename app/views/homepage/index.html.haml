@@ -8,18 +8,18 @@
           %figure
             =image_tag(game.coverart, width: 150, alt: game.title)
             %figcaption
-              %span.game-title
+              %div.game-title
                 =game.title
-                %span.favorite-count
-                  =game.favorite_count
-                  favorites
-                  -if logged_in?
-                    -if !@favorite_game_ids.include?(game.id)
-                      %span.favorite-button
-                        = link_to "❤️", favorite_game_path(game, type: "favorite", path: "/"), method: :put, title: "Add to Favorites"
-                    -else
-                      %span.unfavorite-button
-                        = link_to "❌️", favorite_game_path(game, type: "unfavorite", path: "/"), method: :put, title: "Remove from Favorites"
+              %div.favorite-count
+                =game.favorite_count
+                favorites
+                -if logged_in?
+                  -if !@favorite_game_ids.include?(game.id)
+                    %span.favorite-button
+                      = link_to "❤️", favorite_game_path(game, type: "favorite", path: "/"), method: :put, title: "Add to Favorites"
+                  -else
+                    %span.unfavorite-button
+                      = link_to "❌️", favorite_game_path(game, type: "unfavorite", path: "/"), method: :put, title: "Remove from Favorites"
           
   %section{id: "featured-events"}
     %h1 Featured Events

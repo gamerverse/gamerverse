@@ -15,11 +15,12 @@
 
 .event-list-item {
   display: inline-block;
+  line-height: 1.25;
+  padding-bottom: 1em;
   vertical-align: top;
   width: 400px;
 }
 
 .event-title {
   font-size: 1em;
-  margin-top: 0;
 }

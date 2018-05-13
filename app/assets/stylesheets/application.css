@@ -40,16 +40,13 @@ main {
   width: 87.5%;
 }
 
-section {
-  padding-bottom: 1em;
-}
-
 section h1 {
   margin-top: 0;
 }
 
 section h2 {
   font-size: 1.25em;
+  margin-top: 0;
 }
 
 .games-section {
@@ -75,10 +72,6 @@ section h2 {
 
 #genres-section {
   padding-bottom: 0;
-}
-
-#genres-section h2 {
-  margin-top: 0;
 }
 
 #header-site-title {
