@@ -3,6 +3,13 @@ require 'rails_helper'
 RSpec.describe RegisterController, type: :controller do
 
   describe "GET #index" do
+    it "redirects to home page if user is logged in" do
+      session[:user_id] = 1
+      
+      get :index
+      expect(response).to redirect_to("/")
+    end
+    
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
