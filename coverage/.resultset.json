@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/ubuntu/workspace/gamerverse/app/models/event.rb": [
+      "/home/younes/gamerverse/app/models/event.rb": [
         1,
         1,
         1,
@@ -12,12 +12,12 @@
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/models/application_record.rb": [
+      "/home/younes/gamerverse/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/models/user.rb": [
+      "/home/younes/gamerverse/app/models/user.rb": [
         null,
         1,
         1,
@@ -45,13 +45,13 @@
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/models/favorite_event.rb": [
+      "/home/younes/gamerverse/app/models/favorite_event.rb": [
         1,
         1,
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/login_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/login_controller.rb": [
         1,
         1,
         null,
@@ -94,7 +94,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/application_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -113,45 +113,45 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/application_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/events_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/events_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/games_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/games_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/homepage_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/homepage_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/login_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/login_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/profile_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/profile_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/users_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/homepage_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/homepage_controller.rb": [
         1,
         1,
         null,
         86,
         86,
         null,
-        86,
-        86,
-        86,
-        86,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         86,
@@ -163,20 +163,20 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/models/game.rb": [
+      "/home/younes/gamerverse/app/models/game.rb": [
         1,
         1,
         1,
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/models/favorite_game.rb": [
+      "/home/younes/gamerverse/app/models/favorite_game.rb": [
         1,
         1,
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/events_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/events_controller.rb": [
         1,
         1,
         null,
@@ -191,8 +191,8 @@
         null,
         14,
         null,
-        14,
-        14,
+        null,
+        null,
         14,
         5,
         5,
@@ -237,11 +237,15 @@
         1,
         4,
         null,
-        4,
         null,
         4,
         null,
+        null,
+        null,
+        null,
+        null,
         4,
+        null,
         4,
         null,
         null,
@@ -263,7 +267,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/profile_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/profile_controller.rb": [
         1,
         null,
         1,
@@ -315,7 +319,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/games_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/games_controller.rb": [
         1,
         1,
         null,
@@ -332,8 +336,8 @@
         12,
         null,
         null,
-        12,
-        12,
+        null,
+        null,
         12,
         2,
         2,
@@ -369,7 +373,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/register_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/register_controller.rb": [
         1,
         1,
         1,
@@ -409,39 +413,39 @@
         null
       ]
     },
-    "timestamp": 1526066370
+    "timestamp": 1526694901
   },
   "RSpec": {
     "coverage": {
-      "/home/ubuntu/workspace/gamerverse/app/helpers/application_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/events_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/events_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/games_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/games_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/homepage_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/homepage_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/login_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/login_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/profile_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/profile_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/helpers/users_helper.rb": [
+      "/home/younes/gamerverse/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/events_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/events_controller.rb": [
         1,
         1,
         null,
@@ -456,8 +460,8 @@
         null,
         1,
         null,
-        1,
-        1,
+        null,
+        null,
         1,
         0,
         0,
@@ -532,7 +536,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/application_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -543,7 +547,7 @@
         null,
         null,
         1,
-        4,
+        3,
         null,
         null,
         1,
@@ -551,7 +555,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/games_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/games_controller.rb": [
         1,
         1,
         null,
@@ -568,8 +572,8 @@
         1,
         null,
         null,
-        1,
-        1,
+        null,
+        null,
         1,
         0,
         0,
@@ -605,29 +609,29 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/homepage_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/homepage_controller.rb": [
         1,
         1,
         null,
-        2,
-        2,
-        null,
-        2,
-        2,
-        2,
-        2,
+        1,
+        1,
         null,
         null,
-        2,
+        null,
+        null,
+        null,
+        null,
+        null,
         1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
+        0,
         null,
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/login_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/login_controller.rb": [
         1,
         1,
         null,
@@ -670,7 +674,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/profile_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/profile_controller.rb": [
         1,
         null,
         1,
@@ -722,7 +726,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/controllers/register_controller.rb": [
+      "/home/younes/gamerverse/app/controllers/register_controller.rb": [
         1,
         1,
         1,
@@ -761,7 +765,7 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/models/event.rb": [
+      "/home/younes/gamerverse/app/models/event.rb": [
         1,
         1,
         1,
@@ -772,31 +776,31 @@
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/models/application_record.rb": [
+      "/home/younes/gamerverse/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/models/favorite_event.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
-      "/home/ubuntu/workspace/gamerverse/app/models/favorite_game.rb": [
+      "/home/younes/gamerverse/app/models/favorite_event.rb": [
         1,
         1,
         1,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/models/game.rb": [
+      "/home/younes/gamerverse/app/models/favorite_game.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/younes/gamerverse/app/models/game.rb": [
         1,
         1,
         1,
         null,
         null
       ],
-      "/home/ubuntu/workspace/gamerverse/app/models/user.rb": [
+      "/home/younes/gamerverse/app/models/user.rb": [
         null,
         1,
         1,
@@ -825,6 +829,6 @@
         null
       ]
     },
-    "timestamp": 1526077688
+    "timestamp": 1526694939
   }
 }

@@ -23,3 +23,7 @@
   font-size: 1em;
   margin-top: 0;
 }
+
+#errors{
+  background-color: #ff5252
+}
