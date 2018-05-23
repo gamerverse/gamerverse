@@ -30,12 +30,6 @@ In the terminal, type: “gem install rails”
 
 In the terminal, type: “bundle install”
 
-In the terminal, type: “rails db:migrate RAILS_ENV=development”
-
-In the terminal, type: “rails db:seed”
-
-In the terminal, type: “rails s -b $IP -p $PORT”
-
 Before working on the project, make sure you understand git, especially forking, branching and merging
 
 
