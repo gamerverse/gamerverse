@@ -20,19 +20,25 @@ Select Ruby as a template
 
 Click create a new workspace
 
-In the terminal, type: “git clone https://github.com/gamerverse/gamerverse”
+In the terminal, type:
+
+    “git clone https://github.com/gamerverse/gamerverse”
 
 Change the terminal directory to gamerverse
 
-In the terminal, type: “rvm install ruby-2.5.0”
+In the terminal, type:
 
-In the terminal, type: “gem install rails”
+    “rvm install ruby-2.5.0”
 
-In the terminal, type: “bundle install”
+In the terminal, type:
+    
+    “gem install rails”
+
+In the terminal, type:
+
+    “bundle install”
 
 Before working on the project, make sure you understand git, especially forking, branching and merging
-
-
 
 ### Development
 
