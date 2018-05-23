@@ -4,7 +4,7 @@ A website that aims to help gamers discover new games, especially ones that are 
 
 ## Instructions
 
-### Starting Out
+### Starting Out 
 
 To get the project up and running on c9:
 
