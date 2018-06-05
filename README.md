@@ -1,6 +1,8 @@
 # Gamerverse
 
-A website that aims to help gamers discover new games, especially ones that are being played in their local area. Gamerverse will make it simple and easy to meet new local gamers, as well as setting up and attending local gaming events.
+http://gamerverse.herokuapp.com
+
+A website that aims to help gamers meet new friends and find gaming events in their area. Gamerverse will make it simple to meet local gamers, and to set up and attend local gaming events.
 
 ## Instructions
 
