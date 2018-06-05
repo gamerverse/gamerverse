@@ -4,51 +4,27 @@ A website that aims to help gamers discover new games, especially ones that are 
 
 ## Instructions
 
-### Starting Out
+### Setting up the workspace in AWS Cloud9
 
-To get the project up and running on c9:
+In Cloud9, create a new private hosted workspace, selecting the Ruby template. Enter the following commands in the workspace's terminal:
 
-Log in to c9.io
+    git clone https://github.com/gamerverse/gamerverse
+    cd gamerverse
+    rvm install ruby-2.5.0
+    gem install rails
+    bundle install
 
-Click “create a new workspace”
+### Running the application
 
-Enter a workspace name and description
+#### Development
 
-Select private hosted workspace
-
-Select Ruby as a template
-
-Click create a new workspace
-
-In the terminal, type:
-
-    “git clone https://github.com/gamerverse/gamerverse”
-
-Change the terminal directory to gamerverse
-
-In the terminal, type:
-
-    “rvm install ruby-2.5.0”
-
-In the terminal, type:
-    
-    “gem install rails”
-
-In the terminal, type:
-
-    “bundle install”
-
-Before working on the project, make sure you understand git, especially forking, branching and merging
-
-### Development
-
-Run the application in the development environment (AWS Cloud9):
+Run the application in the development environment (Cloud9):
 
     rails db:migrate RAILS_ENV=development
     rails db:seed
     rails s -b $IP -p $PORT
 
-### Production
+#### Production
 
 Run the application in the production environment (Heroku):
 
